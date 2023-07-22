@@ -4,7 +4,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
-include base_path("app/Domains/Biker/routes/api.php");
+include base_path("app/Domains/Trip/routes/api.php");
 
 /*
 |--------------------------------------------------------------------------

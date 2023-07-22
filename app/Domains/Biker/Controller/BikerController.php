@@ -2,13 +2,14 @@
 
 namespace App\Domains\Biker\Controller;
 
-use App\Domains\Biker\Infrastructure\Repository\BikerRepositoryInterface;
+use App\Domains\Biker\Infrastructure\Repository\RedisBikerRepositoryInterface;
+use App\Domains\Biker\Infrastructure\Repository\TripRepositoryInterface;
 use App\Http\Controllers\Controller;
 use App\Services\Responser\Responser;
 
 class BikerController extends Controller
 {
-    public function __construct(private BikerRepositoryInterface $bikerRepo)
+    public function __construct(private TripRepositoryInterface $bikerRepo)
     {
 
     }
@@ -24,6 +25,31 @@ class BikerController extends Controller
 
         $biker = $this->bikerRepo->createBiker($bikerRequest);
 
-        Responser::success($biker);
+        return Responser::success($biker);
     }
+
+    public function verifyBiker()
+    {
+        $bikerRequest = request()->validate([
+            'bikerId' => 'required|integer|exists:bikers,id'
+        ]);
+
+        $this->bikerRepo->verifyBiker(request()->get('bikerId'));
+
+        return Responser::success();
+    }
+
+    public function fetchBikerInfo()
+    {
+
+    }
+
+    public function setBikerLocation(RedisBikerRepositoryInterface $redisBikerRepo)
+    {
+        $requestBikerLocation = request()->validate([
+            'longitude' => 'required',
+            'latitude' => 'required'
+        ]);
+    }
+
 }

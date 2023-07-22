@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('last_name')->nullable();
             $table->string('cell_number');
             $table->string('email')->nullable();
+            $table->boolean('verified')->default(false);
             $table->timestamps();
         });
     }
