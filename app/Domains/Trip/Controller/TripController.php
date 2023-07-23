@@ -18,6 +18,8 @@ class TripController extends Controller
             'description' => 'nullable|max:255',
         ]);
 
+        // TODO: calculate fee
+
         $trip = $tripRepo->createTrip([...$request, 'user_id' => auth()->user()->id]);
 
 

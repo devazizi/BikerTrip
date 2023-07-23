@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->unsignedInteger('user_id');
             $table->unsignedInteger('biker_id')->nullable();
-            $table->enum('status', []);
+            $table->enum('status', \App\Domains\Trip\Constant\TripConstant::$TRIP_STATUS_CONSTANTS);
             $table->string('description');
             $table->unsignedInteger('fee');
             $table->float('source_latitude');

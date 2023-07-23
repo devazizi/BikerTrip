@@ -50,6 +50,8 @@ class BikerController extends Controller
             'longitude' => 'required',
             'latitude' => 'required'
         ]);
+
+        // todo: put biker location in redis for 10 minute
     }
 
 }

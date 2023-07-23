@@ -22,3 +22,10 @@ include base_path("app/Domains/Trip/routes/api.php");
 // });
 
 
+Route::get('simple', function () {
+    dd(\App\Domains\Trip\Service\TripLocationHelper::checkLocation(
+        \App\Domains\Location\Model\City::find(1)->coordinates,
+        34.6535464
+        ,50.8555841
+    ));
+});
