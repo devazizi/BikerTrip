@@ -2,21 +2,17 @@
 
 namespace App\Domains\Trip\Service;
 
+use Illuminate\Support\Arr;
+
 class TripLocationHelper
 {
     public static function checkLocation($pointsPolygon, $longitude_x, $latitude_y)
     {
         $points_polygon = count($pointsPolygon) - 1;
 
-        $vertices_x = [];
-        foreach ($pointsPolygon as $item) {
-            $vertices_x[] = $item[0];
-        }
+        $vertices_x = Arr::map($pointsPolygon, fn($item) => $item[1]);
+        $vertices_y = Arr::map($pointsPolygon, fn($item) => $item[0]);
 
-        $vertices_y = [];
-        foreach ($pointsPolygon as $item) {
-            $vertices_y[] = $item[1];
-        }
 
         $i = $j = $c = 0;
         for ($i = 0, $j = $points_polygon; $i < $points_polygon; $j = $i++) {
@@ -24,7 +20,7 @@ class TripLocationHelper
                 ($longitude_x < ($vertices_x[$j] - $vertices_x[$i]) * ($latitude_y - $vertices_y[$i]) / ($vertices_y[$j] - $vertices_y[$i]) + $vertices_x[$i])))
                 $c = !$c;
         }
-        return $c;
+        return (bool)$c;
 
     }
 }
