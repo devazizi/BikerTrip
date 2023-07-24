@@ -2,8 +2,8 @@
 
 namespace App\Domains\Biker\Controller;
 
-use App\Domains\Biker\Infrastructure\Repository\RedisBikerRepositoryInterface;
-use App\Domains\Biker\Infrastructure\Repository\TripRepositoryInterface;
+use App\Domains\Trip\Infrastructure\Repository\RedisBikerRepositoryInterface;
+use App\Domains\Trip\Infrastructure\Repository\TripRepositoryInterface;
 use App\Http\Controllers\Controller;
 use App\Services\Responser\Responser;
 
