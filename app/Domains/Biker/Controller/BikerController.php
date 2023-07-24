@@ -2,14 +2,14 @@
 
 namespace App\Domains\Biker\Controller;
 
-use App\Domains\Trip\Infrastructure\Repository\RedisBikerRepositoryInterface;
-use App\Domains\Trip\Infrastructure\Repository\TripRepositoryInterface;
+use App\Domains\Biker\Infrastructure\Repository\RedisBikerRepositoryInterface;
+use App\Domains\Biker\Infrastructure\Repository\BikerRepositoryInterface;
 use App\Http\Controllers\Controller;
 use App\Services\Responser\Responser;
 
 class BikerController extends Controller
 {
-    public function __construct(private TripRepositoryInterface $bikerRepo)
+    public function __construct(private BikerRepositoryInterface $bikerRepo)
     {
 
     }

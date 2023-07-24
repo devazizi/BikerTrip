@@ -4,7 +4,7 @@ namespace App\Services\Responser;
 
 class Responser
 {
-    public static function success(array|string $data, string $message)
+    public static function success($data, string $message)
     {
         return [
             'status' => 'success',
@@ -12,7 +12,7 @@ class Responser
         ];
     }
 
-    public static function error(array|string $data, string $message)
+    public static function error($data, string $message)
     {
         return [
             'status' => 'error',
